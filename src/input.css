@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;600&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-playfair: "Playfair Display", serif;
+  --font-poppins: "Poppins", sans-serif;
+  --default-font-family: var(--font-poppins);
+
+  /* PALET WARNA WISATA ALAM */
+  --color-primary: #2E8B57;    /* Sea Green */
+  --color-secondary: #228B22;  /* Forest Green */
+  --color-tertiary: #2F4F4F;   /* Dark Slate Gray */
+  --color-quaternary: #1E2D2D; /* Sangat gelap */
+  --color-quinary: #F0E68C;    /* Khaki */
+  --color-senary: #87CEEB;     /* Sky Blue */
+}
+
+/* Menghilangkan scrollbar */
+::-webkit-scrollbar { display: none; }
+html { scrollbar-width: none; -ms-overflow-style: none; }
+
+/* Kartu mengambang */
+.floating-card {
+  @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+}
+
+/* Link nav aktif */
+.nav-item.active-nav span { @apply text-senary; }
+
+/* Nav saat di-scroll */
+.nav-scrolled { @apply backdrop-blur-md bg-quaternary/80 border-white/10 shadow-lg; }
+
+/* Teks gradasi */
+.gradient-text { @apply bg-gradient-to-r from-senary to-white/70 bg-clip-text text-transparent; }
+
+/* Tombol filter galeri */
+.filter-btn {
+  @apply px-4 py-2 md:px-6 md:py-2.5 rounded-full text-sm md:text-base font-semibold border-2 border-transparent bg-white/10 text-white/70 transition-all duration-300;
+}
+.filter-btn:hover { @apply bg-white/20 text-white; }
+.filter-btn.active { @apply bg-senary text-quaternary border-senary; }
+
+/* Cursor gradasi (desktop) */
+@media (min-width: 768px) {
+  .gradient-cursor {
+    z-index: 9999; position: fixed; width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(46,139,87,.15) 0%, rgba(34,139,34,.1) 40%, transparent 70%);
+    pointer-events: none; mix-blend-mode: screen; transform: translate(-50%,-50%);
+    transition: width .3s, height .3s;
+  }
+  .gradient-cursor-inner {
+    z-index: 9998; position: fixed; width: 200px; height: 200px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(135,206,235,.2) 0%, rgba(135,206,235,.1) 40%, transparent 70%);
+    pointer-events: none; mix-blend-mode: screen; transform: translate(-50%,-50%);
+    transition: width .3s, height .3s;
+  }
+}
+
+/* Image Slider di Hero */
+#hero-image-slider .slider-image {
+  @apply absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 ease-in-out;
+}
+#hero-image-slider .slider-image.active { @apply opacity-100; }
+
+/* Tombol navigasi slider */
+.slider-nav-btn {
+  @apply absolute top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm text-white text-3xl
+         flex items-center justify-center opacity-0 invisible transition-all duration-300 
+         hover:bg-white/20 hover:scale-110;
+}
+.slider-nav-btn.visible { @apply opacity-100 visible; }
+
+/* TEST: harus kelihatan langsung */
+body { outline: 2px dashed lime; }
+
+.hover-rotate-text { transition: transform .2s; display: inline-block; }
+.hover-rotate-text:hover { transform: rotate(-1deg) translateY(-1px); }

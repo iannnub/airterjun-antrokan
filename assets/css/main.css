@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;600&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-playfair: "Playfair Display", serif;
+  --font-poppins: "Poppins", sans-serif;
+  --default-font-family: var(--font-poppins);
+
+  /* PALET WARNA WISATA ALAM (HIJAU & BIRU) */
+  --color-primary: #2E8B57;    /* Sea Green (Hijau Laut) */
+  --color-secondary: #228B22;  /* Forest Green (Hijau Hutan) */
+  --color-tertiary: #2F4F4F;   /* Dark Slate Gray (Abu Gelap) */
+  --color-quaternary: #1E2D2D; /* Abu Sangat Gelap (untuk background) */
+  --color-quinary: #F0E68C;    /* Khaki (Krem Pasir) */
+  --color-senary: #87CEEB;     /* Sky Blue (Biru Langit untuk aksen) */
+}
+
+/* Menghilangkan scrollbar */
+::-webkit-scrollbar {
+  display: none;
+}
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Style dasar untuk kartu mengambang */
+.floating-card {
+  @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+}
+
+/* Style untuk link navigasi yang aktif */
+.nav-item.active-nav span {
+    @apply text-[var(--color-senary)];
+}
+/* Style untuk navigasi saat di-scroll */
+.nav-scrolled {
+  @apply backdrop-blur-md bg-quaternary/80 border-white/10 shadow-lg;
+}
+
+/* Teks gradasi */
+.gradient-text {
+    @apply bg-gradient-to-r from-senary to-white/70 bg-clip-text text-transparent;
+}
+
+/* Styling untuk Tombol Filter Galeri */
+.filter-btn {
+    @apply px-4 py-2 md:px-6 md:py-2.5 rounded-full text-sm md:text-base font-semibold border-2 border-transparent bg-white/10 text-white/70 transition-all duration-300;
+}
+
+.filter-btn:hover {
+    @apply bg-white/20 text-white;
+}
+
+.filter-btn.active {
+    @apply bg-[var(--color-senary)] text-[var(--color-quaternary)] border-[var(--color-senary)];
+}
+
+/* Efek kursor gradasi (hanya di desktop) */
+@media (min-width: 768px) {
+  .gradient-cursor {
+    z-index: 9999;
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(46, 139, 87, 0.15) 0%,
+      rgba(34, 139, 34, 0.1) 40%,
+      transparent 70%
+    );
+    pointer-events: none;
+    mix-blend-mode: screen;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+  }
+  
+  .gradient-cursor-inner {
+    z-index: 9998;
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(135, 206, 235, 0.2) 0%,
+      rgba(135, 206, 235, 0.1) 40%,
+      transparent 70%
+    );
+    pointer-events: none;
+    mix-blend-mode: screen;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+  }
+}     
+
+/* CSS untuk Image Slider di Hero Section */
+#hero-image-slider .slider-image {
+    @apply absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 ease-in-out;
+}
+
+#hero-image-slider .slider-image.active {
+    @apply opacity-100;
+}
+
+/* CSS untuk Tombol Navigasi Slider */
+.slider-nav-btn {
+    @apply absolute top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm text-white text-3xl
+           flex items-center justify-center
+           opacity-0 invisible transition-all duration-300 
+           hover:bg-white/20 hover:scale-110;
+}
+
+.slider-nav-btn.visible {
+    @apply opacity-100 visible;
+}
