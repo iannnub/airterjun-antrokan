@@ -8,6 +8,10 @@ import { mobileMenu } from './mobile-menu.js';
 import { backToTop } from './back-to-top.js';
 import { activeNavOnScroll } from './active-nav-on-scroll.js';
 import { heroMedia } from './hero-media.js';
+import { infoFilter } from "./animation/info-filter.js";
+import { faqAccordion } from "./faq.js";
+import { toastWarning } from './toast-warning.js';
+import { safetyToast } from './safety-toast.js';
 
 document.addEventListener("DOMContentLoaded", () => {
   navbarScroll();
@@ -20,6 +24,10 @@ document.addEventListener("DOMContentLoaded", () => {
   backToTop();
   activeNavOnScroll();
   heroMedia();
+  infoFilter();
+  faqAccordion();
+  toastWarning();
+  safetyToast();
 
   // Efek kursor hanya berjalan di layar desktop
   if (window.innerWidth >= 768) {
